@@ -3,10 +3,11 @@ angular
 	.module('flapperNews')
 	.controller('PostDetailCtrl', [
 		'$scope',
+		'$state',
 		'posts',
 		'post',
 		'auth',
-		function ($scope, posts, post, auth) {
+		function ($scope, $state, posts, post, auth) {
 			$scope.post = post;
 			$scope.isLoggedIn = auth.isLoggedIn;
 
@@ -24,5 +25,9 @@ angular
 			$scope.incrementUpvotes = function(comment) {
 				posts.upvoteComment(post, comment);
 			};
+
+			$scope.backToHome = function() {
+				$state.go('home');
+			}
 		}
 	]);
